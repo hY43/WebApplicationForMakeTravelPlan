@@ -1,4 +1,23 @@
-﻿create table userinfo
+﻿drop sequence bookmark_bookmarkno_seq;
+drop sequence question_questionno_seq;
+drop sequence city_cityno_seq;
+drop sequence review_reviewno_seq;
+drop sequence answer_answerno;
+drop sequence plan_planno_seq;
+drop sequence plandetail_plandetailno_seq;
+drop sequence place_placeno_seq;
+
+drop table bookmark;
+drop table answer;
+drop table question;
+drop table review;
+drop table plandetail;
+drop table plan;
+drop table place;
+drop table city;
+drop table userinfo;
+
+create table userinfo
 (userid	varchar2(2000),
 password	varchar2(20),
 name	varchar2(20),
@@ -41,9 +60,11 @@ period	number(20),
 userid	varchar2(2000));
 
 create table city
-(cityname	varchar2(2000),
-latitude	number(20,10),
-longitude	number(20,10),
+(
+cityno number(10),
+cityname	varchar2(2000),
+latitude	number(8,6),
+longitude	number(8,6),
 info	varchar2(2000),
 img	varchar2(2000));
 
@@ -52,10 +73,10 @@ create table place
 placename	varchar2(2000),
 img	varchar2(2000),
 info	varchar2(2000),
-latitude	number(20,10),
-longitude	number(20,10),
+latitude	number(8,6),
+longitude	number(8,6),
 icon	varchar2(2000),
-cityname	varchar2(2000));
+cityno	number(10));
 
 create table plandetail
 (plandetailno	number(20),
@@ -75,6 +96,12 @@ nocache
 nocycle;
 
 create sequence question_questionno_seq
+start with 1
+increment by 1
+nocache
+nocycle;
+
+create sequence city_cityno_seq
 start with 1
 increment by 1
 nocache
@@ -109,7 +136,6 @@ start with 1
 increment by 1
 nocache
 nocycle;
-
 
 
 alter table userinfo
@@ -149,13 +175,13 @@ add constraint plan_userid_fk foreign key(userid)
 references userinfo(userid);
 
 alter table city
-add constraint city_cityname_pk primary key(cityname);
+add constraint city_cityno_pk primary key(cityno);
 
 alter table place
 add constraint place_placeno_pk primary key(placeno);
 alter table place
-add constraint place_cityname_fk foreign key(cityname)
-references city(cityname);
+add constraint place_cityno_fk foreign key(cityno)
+references city(cityno);
 
 alter table plandetail
 add constraint plandetail_plandetailno_pk primary key(plandetailno);

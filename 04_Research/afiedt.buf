@@ -1,0 +1,2 @@
+insert into place values(place_placeno_seq.nextval, 'Kesar Da Dhaba', '../images/Amritsar_Kesar Da Dhaba1.jpg', '암리차르 소재 319개 레스토랑 중 3위합리적인 가격! 아침 식사를 거른 후 이 곳에 가보라고 추천받아 가게 되었다. 암리차르 황금 사원 시장의 위치에 있습니다. 풍부한 채식 음식이 좋고 버터 기름 강력한 오일맛이 일품이다.', 31.624236, 74.873386, '맛집', 3)
+/

@@ -1,0 +1,19 @@
+﻿Naming Rule
+* [parentName]+[childName] Ex) mainPlanView.jsp : mainView.jsp 페이지 내의 계획을 작성하는 행위를 하는 페이지
+* 실제 보여지는 페이지는 끝에 view가 붙음 Ex) mainView.jsp
+
+1. mainView.jsp : 시작 페이지
+1-1. 회원가입 페이지(p) mainSignUpView.jsp
+1-2. 로그인(p) mainSignInView.jsp
+
+2. planView.jsp : 일정 만들기의 시작 페이지
+2-1. planDetailView.jsp : 일정 상세 페이지
+
+3. infoView.jsp : 지역 소개의 시작 페이지로 메뉴 중 지역을 기본적으로 선택한 화면
+3-1. infoFoodView.jsp : 맛집 소개
+3-2. infoGuestHouseView : 게스트 하우스 소개
+3-3. infoGuideView.jsp : 가이드
+
+4. communityView.jsp : 커뮤니티 페이지
+
+5. myView.jsp : 개인 페이지

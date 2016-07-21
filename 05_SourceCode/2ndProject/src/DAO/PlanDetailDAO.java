@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import VO.PlaceVO;
 import VO.PlanDetailVO;
 
 public class PlanDetailDAO {
@@ -74,7 +75,7 @@ public class PlanDetailDAO {
 		sb.setLength(0);
 		sb.append("INSERT INTO plandetail ");
 		sb.append("VALUES(plandetail_plandetailno_seq.NEXTVAL, ");
-		sb.append("?, ?, ?, ?, ?, ? )");
+		sb.append("?, ?, ?, ?, ?, ? ");
 
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
@@ -142,5 +143,36 @@ public class PlanDetailDAO {
 			e.printStackTrace();
 		}
 
+	}
+
+	public ArrayList<PlaceVO> plandetailOne(int planNo) {
+		ArrayList<PlaceVO> list = new ArrayList<PlaceVO>();
+		sb.setLength(0);
+		sb.append("SELECT p.* ");
+		sb.append("FROM place p, plandetail pd ");
+		sb.append("WHERE planno = ? ");
+		sb.append("AND p.placeno = pd.placeno ");
+		PlaceVO vo = null;
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, planNo);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int placeNo = rs.getInt("placeno");
+				String placeName = rs.getString("placename");
+				String img = rs.getString("img");
+				String info = rs.getString("info");
+				int latitude = rs.getInt("latitude");
+				int longitude = rs.getInt("longitude");
+				String icon = rs.getString("icon");
+				String cityName = rs.getString("cityName");
+				vo = new PlaceVO(placeNo, placeName, img, info, latitude, longitude, icon, cityName);
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

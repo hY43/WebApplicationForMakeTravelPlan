@@ -70,16 +70,15 @@ public class ReviewDAO {
 	public void insertOne(ReviewVO vo) {
 		sb.setLength(0);
 		sb.append("INSERT INTO review ");
-		sb.append("VALUES(review_reviewno_seq.NEXTVAL, ?, ?, ?, ?, ? )");
+		sb.append("VALUES(review_reviewno_seq.NEXTVAL, ?, sysdate, ?, ?, ? )");
 
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
 
 			pstmt.setInt(1, vo.getEnable());
-			pstmt.setString(2, vo.getRegDate());
-			pstmt.setString(3, vo.getTitle());
-			pstmt.setString(4, vo.getContents());
-			pstmt.setString(5, vo.getUserId());
+			pstmt.setString(2, vo.getTitle());
+			pstmt.setString(3, vo.getContents());
+			pstmt.setString(4, vo.getUserId());
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -107,19 +106,18 @@ public class ReviewDAO {
 	public void updateOne(ReviewVO vo) {
 		sb.setLength(0);
 		sb.append("UPDATE review ");
-		sb.append("SET enable = ?, regdate = ?, title = ?, ");
+		sb.append("SET enable = ?, title = ?, ");
 		sb.append("contents = ?, userid = ? ");
 		sb.append("WHERE  reviewno = ? ");
 
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
 
-			pstmt.setInt(1, vo.getEnable());
-			pstmt.setString(2, vo.getRegDate());
-			pstmt.setString(3, vo.getTitle());
-			pstmt.setString(4, vo.getContents());
-			pstmt.setString(5, vo.getUserId());
-			pstmt.setInt(6, vo.getReviewNo());
+			pstmt.setInt(1, vo.getEnable());			
+			pstmt.setString(2, vo.getTitle());
+			pstmt.setString(3, vo.getContents());
+			pstmt.setString(4, vo.getUserId());
+			pstmt.setInt(5, vo.getReviewNo());
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {

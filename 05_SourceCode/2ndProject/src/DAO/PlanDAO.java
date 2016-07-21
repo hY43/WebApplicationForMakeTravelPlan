@@ -71,7 +71,7 @@ public class PlanDAO {
 	public void insertOne(PlanVO vo) {
 		sb.setLength(0);
 		sb.append("INSERT INTO plan ");
-		sb.append("VALUES (plan_planno_seq.NEXTVAL, ?, ?, ?, ? )");
+		sb.append("VALUES (plan_planno_seq.NEXTVAL, ?, ?, ?, ? ");
 
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
@@ -136,4 +136,29 @@ public class PlanDAO {
 		}
 	}
 
+	public ArrayList<PlanVO> selectUserPlan(String userId) {
+		ArrayList<PlanVO> list = new ArrayList<PlanVO>();
+		sb.setLength(0);
+		sb.append("SELECT planno, title, regdate, period ");
+		sb.append("FROM plan WHERE userid = ? ");
+		PlanVO vo = null;
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				int planNo = rs.getInt("planno");
+				String title = rs.getString("title");
+				String regdate = rs.getString("regdate");
+				int period = rs.getInt("period");
+				vo = new PlanVO(planNo, title, regdate, period, userId);
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

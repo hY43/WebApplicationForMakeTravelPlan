@@ -27,13 +27,13 @@ public class CityDAO {
 			pstmt = conn.prepareStatement(sb.toString());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				int cityno = rs.getInt("cityno");
+				int cityNo = rs.getInt("cityno");
 				String cityName = rs.getString("cityname");
-				float latitude = rs.getFloat("latitude");
-				float longitude = rs.getFloat("longitude");
+				int latitude = rs.getInt("latitude");
+				int longitude = rs.getInt("longitude");
 				String info = rs.getString("info");
 				String img = rs.getString("img");
-				vo = new CityVO(cityno, cityName, latitude, longitude, info, img);
+				vo = new CityVO(cityNo, cityName, latitude, longitude, info, img);
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -43,23 +43,23 @@ public class CityDAO {
 		return list;
 	}
 
-	public CityVO selectOne(String cityName) {
+	public CityVO selectOne(int cityNo) {
 		sb.setLength(0);
-		sb.append("SELECT latitude, longitue, info, img ");
+		sb.append("SELECT cityname, latitude, longitue, info, img ");
 		sb.append("FROM city ");
-		sb.append("WHERE cityname = ? ");
+		sb.append("WHERE cityno = ? ");
 		CityVO vo = null;
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setString(1, cityName);
+			pstmt.setInt(1, cityNo);
 			rs = pstmt.executeQuery();
 			rs.next();
-			int cityno = rs.getInt("cityno");
+			String cityName = rs.getString("cityname");
 			int latitude = rs.getInt("latitude");
 			int longitude = rs.getInt("longitude");
 			String info = rs.getString("info");
 			String img = rs.getString("img");
-			vo = new CityVO(cityno, cityName, latitude, longitude, info, img);
+			vo = new CityVO(cityNo, cityName, latitude, longitude, info, img);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -71,13 +71,13 @@ public class CityDAO {
 	public void insertOne(CityVO vo) {
 		sb.setLength(0);
 		sb.append("INSERT INTO city ");
-		sb.append("VALUES( ?, ?, ?, ?, ? ");
+		sb.append("VALUES(city_cityno_seq.NEXTVAL, ?, ?, ?, ?, ? ) ");
 
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setString(1, vo.getCityName());
-			pstmt.setFloat(2, vo.getLatitude());
-			pstmt.setFloat(3, vo.getLongitude());
+			pstmt.setInt(2, vo.getLatitude());
+			pstmt.setInt(3, vo.getLongitude());
 			pstmt.setString(4, vo.getInfo());
 			pstmt.setString(5, vo.getImg());
 			pstmt.executeUpdate();
@@ -87,14 +87,14 @@ public class CityDAO {
 		}
 	}
 
-	public void deleteOne(String cityName) {
+	public void deleteOne(int cityNo) {
 		sb.setLength(0);
 		sb.append("DELETE city ");
-		sb.append("WHERE cityName = ? ");
+		sb.append("WHERE cityNo = ? ");
 
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setString(1, cityName);
+			pstmt.setInt(1, cityNo);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -105,16 +105,17 @@ public class CityDAO {
 	public void updateOne(CityVO vo) {
 		sb.setLength(0);
 		sb.append("UPDATE city ");
-		sb.append("SET latitude = ?, longitude = ?, info = ?, img = ? ");
-		sb.append("WHERE cityname = ? ");
+		sb.append("SET cityname = ?, latitude = ?, longitude = ?, info = ?, img = ? ");
+		sb.append("WHERE cityno = ? ");
 
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setFloat(1, vo.getLatitude());
-			pstmt.setFloat(2, vo.getLongitude());
-			pstmt.setString(3, vo.getInfo());
-			pstmt.setString(4, vo.getImg());
-			pstmt.setString(5, vo.getCityName());
+			pstmt.setString(1, vo.getCityName());
+			pstmt.setInt(2, vo.getLatitude());
+			pstmt.setInt(3, vo.getLongitude());
+			pstmt.setString(4, vo.getInfo());
+			pstmt.setString(5, vo.getImg());
+			pstmt.setInt(6, vo.getCityNo());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -1,0 +1,81 @@
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: 6E21-9500
+
+ C:\Users\user\Documents\WebApplicationForMakeTravelPlan\04_Research 디렉터리
+
+[.]
+[..]
+Amritsar_Bhrawan da dhaba1.JPG
+Amritsar_Bhrawan da dhaba2.JPG
+Amritsar_Bhrawan da dhaba3.JPG
+Amritsar_golden temple.jpg
+Amritsar_Jallianwala park1.JPG
+Amritsar_Jallianwala park2.JPG
+Amritsar_Kesar Da Dhaba1.jpg
+Amritsar_Kesar Da Dhaba2.jpg
+Amritsar_Kesar Da Dhaba3.jpg
+Amritsar_TempleStay1.jpg
+Amritsar_TempleStay2.jpg
+Amritsar_Tourist1.jpg
+Amritsar_Tourist2.jpg
+Amritsar_Tourist3.jpg
+Chennai_Ekambarswara Mandir.jpg
+Chennai_Hola1.PNG
+Chennai_Hola2.PNG
+Chennai_Hola3.PNG
+Chennai_Kapaleeshwar Temple.JPG
+Chennai_Kapaleeshwar Temple2.JPG
+Chennai_Lloyed.jpg
+Chennai_Lloyed2.jpg
+Chennai_Lloyed3.jpg
+Chennai_Madras Crocodile Bank.JPG
+Chennai_Madras Crocodile Bank2.JPG
+chennai_Mahabalipuram.jpg
+Chennai_ria's GuestHouse1.JPG
+Chennai_ria's GuestHouse2.JPG
+Chennai_sorrento.JPG
+Chennai_sorrento2.JPG
+Chennai_tangerine1.JPG
+Chennai_tangerine2.JPG
+Delhi_Humayun's Tomb.JPG
+Delhi_Khosla Cafe1.JPG
+Delhi_maya'sNest.JPG
+Delhi_Swaminarayan Akshardham.jpg
+Delhi_Tadka_1.JPG
+Delhi_Tadka_2.JPG
+Jaipur_Elefantastic.JPG
+Jaipur_Jal Mahal.JPG
+Jaipur_Lassiwala.JPG
+Jaipur_Le Pension Backpackers Hostel Jaipur.JPG
+Jaipur_Rawla Mrignayani Palace.JPG
+Jaipur_TakeAway.JPG
+Leh_amdo1.JPG
+Leh_amdo2.JPG
+Leh_asia1.JPG
+Leh_asia2.JPG
+Leh_Hall of Fame1.JPG
+Leh_Hall of Fame2.JPG
+Leh_palaceview1.JPG
+Leh_palaceview2.JPG
+Leh_Pangong Tso1.JPG
+Leh_Pangong Tso2.JPG
+Leh_Wonderland1.JPG
+Leh_Wonderland2.JPG
+list.txt
+Mumbai_canara.JPG
+Mumbai_EsselWorld.JPG
+Mumbai_gateofindia.JPG
+Mumbai_Ginger Mumbai Andheri.JPG
+Mumbai_The Oberoi, Mumbai.jpg
+Varanasi_Ganga Fuji Restaurant.JPG
+Varanasi_Ganges.JPG
+Varanasi_Narula Bakery.JPG
+Varanasi_Palace on steps.JPG
+Varanasi_Sarnath.JPG
+Varanasi_Sita Guest House.JPG
+남부.txt
+중북부.txt
+최북부.txt
+
+              71개 파일           8,717,108 바이트
+               2개 디렉터리  113,724,833,792 바이트 남음

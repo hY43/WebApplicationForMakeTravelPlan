@@ -71,7 +71,7 @@ public class PlanDAO {
 	public void insertOne(PlanVO vo) {
 		sb.setLength(0);
 		sb.append("INSERT INTO plan ");
-		sb.append("VALUES (plan_planno_seq.NEXTVAL, ?, ?, ?, ? ");
+		sb.append("VALUES (plan_planno_seq.NEXTVAL, ?, ?, ?, ? )");
 
 		try {
 			pstmt = conn.prepareStatement(sb.toString());

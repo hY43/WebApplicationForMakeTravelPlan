@@ -18,26 +18,28 @@ public class PlaceDAO {
 		conn = MakeConnection.getInstance().getConnection();
 	}
 
-	public ArrayList<PlaceVO> selectAll() {
+	public ArrayList<PlaceVO> selectAll(int cityno) {
 		ArrayList<PlaceVO> list = new ArrayList<PlaceVO>();
 		sb.setLength(0);
 		sb.append("SELECT * FROM place ");
+		sb.append("WHERE CITYNO = ? ");
 		PlaceVO vo = null;
 
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, cityno);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				int placeNo = rs.getInt("placeno");
 				String placeName = rs.getString("placename");
 				String img = rs.getString("img");
 				String info = rs.getString("info");
-				int latitude = rs.getInt("latitude");
-				int longitude = rs.getInt("longitude");
+				float latitude = rs.getFloat("latitude");
+				float longitude = rs.getFloat("longitude");
 				String icon = rs.getString("icon");
-				String cityName = rs.getString("cityname");
+				int cityNo = rs.getInt("cityno");
 
-				vo = new PlaceVO(placeNo, placeName, img, info, latitude, longitude, icon, cityName);
+				vo = new PlaceVO(placeNo, placeName, img, info, latitude, longitude, icon, cityNo);
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -65,8 +67,8 @@ public class PlaceDAO {
 			int latitude = rs.getInt("latitude");
 			int longitude = rs.getInt("longitude");
 			String icon = rs.getString("icon");
-			String cityName = rs.getString("cityname");
-			vo = new PlaceVO(placeNo, placeName, img, info, latitude, longitude, icon, cityName);
+			int cityNo = rs.getInt("cityno");
+			vo = new PlaceVO(placeNo, placeName, img, info, latitude, longitude, icon, cityNo);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,10 +86,10 @@ public class PlaceDAO {
 			pstmt.setString(1, vo.getPlaceName());
 			pstmt.setString(2, vo.getImg());
 			pstmt.setString(3, vo.getInfo());
-			pstmt.setInt(4, vo.getLatitude());
-			pstmt.setInt(5, vo.getLongitude());
+			pstmt.setFloat(4, vo.getLatitude());
+			pstmt.setFloat(5, vo.getLongitude());
 			pstmt.setString(6, vo.getIcon());
-			pstmt.setString(7, vo.getCityName());
+			pstmt.setInt(7, vo.getCityNo());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -123,10 +125,10 @@ public class PlaceDAO {
 			pstmt.setString(1, vo.getPlaceName());
 			pstmt.setString(2, vo.getImg());
 			pstmt.setString(3, vo.getInfo());
-			pstmt.setInt(4, vo.getLatitude());
-			pstmt.setInt(5, vo.getLongitude());
+			pstmt.setFloat(4, vo.getLatitude());
+			pstmt.setFloat(5, vo.getLongitude());
 			pstmt.setString(6, vo.getIcon());
-			pstmt.setString(7, vo.getCityName());
+			pstmt.setInt(7, vo.getCityNo());
 			pstmt.setInt(8, vo.getPlaceNo());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {

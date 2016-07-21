@@ -74,7 +74,7 @@ public class PlanDetailDAO {
 		sb.setLength(0);
 		sb.append("INSERT INTO plandetail ");
 		sb.append("VALUES(plandetail_plandetailno_seq.NEXTVAL, ");
-		sb.append("?, ?, ?, ?, ?, ? ");
+		sb.append("?, ?, ?, ?, ?, ? )");
 
 		try {
 			pstmt = conn.prepareStatement(sb.toString());

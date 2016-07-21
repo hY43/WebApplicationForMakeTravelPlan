@@ -27,12 +27,13 @@ public class CityDAO {
 			pstmt = conn.prepareStatement(sb.toString());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
+				int cityno = rs.getInt("cityno");
 				String cityName = rs.getString("cityname");
-				int latitude = rs.getInt("latitude");
-				int longitude = rs.getInt("longitude");
+				float latitude = rs.getFloat("latitude");
+				float longitude = rs.getFloat("longitude");
 				String info = rs.getString("info");
 				String img = rs.getString("img");
-				vo = new CityVO(cityName, latitude, longitude, info, img);
+				vo = new CityVO(cityno, cityName, latitude, longitude, info, img);
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -53,11 +54,12 @@ public class CityDAO {
 			pstmt.setString(1, cityName);
 			rs = pstmt.executeQuery();
 			rs.next();
+			int cityno = rs.getInt("cityno");
 			int latitude = rs.getInt("latitude");
 			int longitude = rs.getInt("longitude");
 			String info = rs.getString("info");
 			String img = rs.getString("img");
-			vo = new CityVO(cityName, latitude, longitude, info, img);
+			vo = new CityVO(cityno, cityName, latitude, longitude, info, img);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -74,8 +76,8 @@ public class CityDAO {
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setString(1, vo.getCityName());
-			pstmt.setInt(2, vo.getLatitude());
-			pstmt.setInt(3, vo.getLongitude());
+			pstmt.setFloat(2, vo.getLatitude());
+			pstmt.setFloat(3, vo.getLongitude());
 			pstmt.setString(4, vo.getInfo());
 			pstmt.setString(5, vo.getImg());
 			pstmt.executeUpdate();
@@ -108,8 +110,8 @@ public class CityDAO {
 
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setInt(1, vo.getLatitude());
-			pstmt.setInt(2, vo.getLongitude());
+			pstmt.setFloat(1, vo.getLatitude());
+			pstmt.setFloat(2, vo.getLongitude());
 			pstmt.setString(3, vo.getInfo());
 			pstmt.setString(4, vo.getImg());
 			pstmt.setString(5, vo.getCityName());
